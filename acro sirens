@@ -1,0 +1,26 @@
+import React, { useState, useEffect } from 'react';
+
+const ImageGallery = () => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    // Fetch images from your backend or external API
+    // Replace 'fetchImages' with your actual function to fetch images
+    fetchImages().then(data => setImages(data));
+  }, []);
+
+  return (
+    <div className="image-gallery">
+      {images.map((image, index) => (
+        <div key={index} className="image-item">
+          <img
+            src={`https://YOUR_NETLIFY_SITE_NAME.netlify.app/${image.path}?nf_resize=fit&w=300&q=80`}
+            alt={image.alt}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ImageGallery;
